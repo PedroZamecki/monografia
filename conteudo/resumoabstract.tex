@@ -4,42 +4,29 @@
 
 % As palavras-chave são obrigatórias, em português e em inglês, e devem ser
 % definidas antes do resumo/abstract. Acrescente quantas forem necessárias.
-\palavraschave{Palavra-chave1, Palavra-chave2, Palavra-chave3}
+\palavraschave{Jogo, Corrida, OpenGL, Kart}
 
-\keywords{Keyword1,Keyword2,Keyword3}
+\keywords{Game, Racing, OpenGL, Kart}
 
 % O resumo é obrigatório, em português e inglês. Estes comandos também
 % geram automaticamente a referência para o próprio documento, conforme
 % as normas sugeridas da USP.
 \resumo{
-Elemento obrigatório, constituído de uma sequência de frases concisas e
-objetivas, em forma de texto. Deve apresentar os objetivos, métodos empregados,
-resultados e conclusões. O resumo deve ser redigido em parágrafo único, conter
-no máximo 500 palavras e ser seguido dos termos representativos do conteúdo do
-trabalho (palavras-chave). Deve ser precedido da referência do documento.
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto.
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto.
+Este trabalho apresenta o desenvolvimento de USP Kart, um jogo eletrônico inspirado no clássico Mario Kart. O projeto combina elementos de entretenimento e desafios técnicos, integrando conceitos avançados de computação gráfica e algoritmos de busca de caminhos.
+
+Utilizando bibliotecas amplamente empregadas no desenvolvimento de gráficos 3D, como OpenGL, GLEW, GLFW, ASSIMP e GLM, USP Kart foi implementado em C++ para explorar os recursos de paralelismo da linguagem. Este recurso foi essencial para gerenciar múltiplos corredores controlados por computador, representando o algoritmo programado para competir no jogo. O comportamento desses agentes foi desenvolvido utilizando o algoritmo A*, que permite o cálculo eficiente do caminho mais curto até a próxima linha de controle, mesmo em cenários dinâmicos e complexos.
+
+A estética do jogo foi criada do zero, com uma direção artística que homenageia a Universidade de São Paulo (USP) e o Instituto de Matemática e Estatística (IME), incluindo a representação da mascote Fluffy. Essa identidade visual foi projetada para proporcionar uma experiência imersiva e personalizada para os jogadores, utilizando modelos de representação de carros com o 'bicycle model', modelo de representação de carros.
+
+O projeto também aborda os desafios encontrados na integração entre gráficos, física, ferramentas para desenvolvimento e cálculos de descoberta de caminhos em tempo real, além de destacar os benefícios do uso de técnicas de programação modernas e bibliotecas de código aberto. Por fim, USP Kart busca não apenas oferecer um produto jogável, mas também servir como estudo de caso para a aplicação prática de conceitos de computação gráfica, paralelismo e algoritmos de busca.
 }
 
 \abstract{
-Elemento obrigatório, elaborado com as mesmas características do resumo em
-língua portuguesa. De acordo com o Regimento da Pós-Graduação da USP (Artigo
-99), deve ser redigido em inglês para fins de divulgação. É uma boa ideia usar
-o sítio \url{www.grammarly.com} na preparação de textos em inglês.
-Text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text.
-Text text text text text text text text text text text text text text text text
-text text text text text text text text text text text text text text text text
-text text text.
+This work presents the development of USP Kart, an electronic game inspired by the classic Mario Kart. The project combines elements of entertainment and technical challenges, integrating advanced concepts of computer graphics and pathfinding algorithms.
+
+Using libraries widely employed in the development of 3D graphics, such as OpenGL, GLEW, GLFW, ASSIMP and GLM, USP Kart was implemented in C++ to explore the language's parallelism features. This feature was essential to manage multiple computer-controlled racers, representing the programmed algorithm to compete in the game. The behavior of these agents was developed using the A* algorithm, which allows the efficient calculation of the shortest path to the next checkpoint, even in dynamic and complex scenarios.
+
+The game's aesthetics were created from scratch, with an artistic direction that pays homage to the University of São Paulo (USP) and the Institute of Mathematics and Statistics (IME), including the representation of the mascot Fluffy. This visual identity was designed to provide an immersive and personalized experience for players, using car representation models with the 'bicycle model', a car representation model.
+
+The project also addresses the challenges encountered in the integration between graphics, physics, development tools, and real-time pathfinding calculations, as well as highlighting the benefits of using modern programming techniques and open-source libraries. Finally, USP Kart seeks not only to offer a playable product but also to serve as a case study for the practical application of computer graphics, parallelism, and search algorithms concepts.
 }

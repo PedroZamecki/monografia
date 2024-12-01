@@ -1,0 +1,2 @@
+{"rule":"PT_SIMPLE_REPLACE","sentence":"^\\QJogo, Corrida, OpenGL, Kart\\E$"}
+{"rule":"PT_BR_SIMPLE_REPLACE","sentence":"^\\QO projeto combina elementos de entretenimento e desafios técnicos, integrando conceitos avançados de computação gráfica e algoritmos de inteligência artificial.\\E$"}
