@@ -1,0 +1,56 @@
+%!TeX root=../tese.tex
+%("dica" para o editor de texto: este arquivo é parte de um documento maior)
+% para saber mais: https://tex.stackexchange.com/q/78101
+
+%% ------------------------------------------------------------------------- %%
+
+% "\chapter" cria um capítulo com número e o coloca no sumário; "\chapter*"
+% cria um capítulo sem número e não o coloca no sumário. A introdução não
+% deve ser numerada, mas deve aparecer no sumário. Por conta disso, este
+% modelo define o comando "\chapter**".
+\chapter**{Introdução}
+\label{cap:introducao}
+
+\enlargethispage{.5\baselineskip}
+
+A indústria de jogos eletrônicos é um dos setores que mais cresce globalmente, movimentando bilhões de dólares e impactando diversas áreas, desde a tecnologia até a cultura popular. Com mais de quarenta anos de história, os jogos eletrônicos evoluíram de experiências simples em 2D para produções altamente complexas e imersivas em 3D, alavancadas por avanços tecnológicos e pela criatividade de desenvolvedores ao redor do mundo. Gêneros como aventura, RPG, FPS e corrida se consolidaram como pilares dessa indústria, atraindo uma ampla gama de jogadores.
+
+No gênero de jogos de corrida, títulos como \textit{Mario Kart}\index{Língua estrangeira} se destacam não apenas pela jogabilidade divertida e acessível, mas também pela capacidade de reunir amigos e familiares em competições intensas e, por vezes, imprevisíveis. Lançado originalmente em 1992, \textit{Mario Kart} redefiniu o gênero ao introduzir elementos de combate e interação dinâmica, como o uso de itens para atrapalhar os adversários. Esse modelo de jogo se mostrou extremamente popular e influente, servindo de inspiração para outros títulos como \textit{Crash Team Racing}\index{Língua estrangeira}, \textit{Sonic \& All-Stars Racing}\index{Língua estrangeira} e \textit{Blur}\index{Língua estrangeira}. Ademais, estudos recentes mostram que \textit{Mario Kart}\index{Língua estrangeira} é considerado um dos jogos mais estressantes pelos jogadores (\cite{stressful:bonusFinder}), devido às viradas de sorte e à competitividade elevada, aspectos que o tornam cativante e memorável.
+
+\section**{Motivação}
+Apesar do sucesso internacional desse estilo de jogo, o mercado brasileiro ainda carece de produções relevantes no segmento. A indústria nacional de jogos tem mostrado crescimento expressivo, mas a maior parte dos títulos lançados se concentra em gêneros como aventura, \textit{indie}\index{Língua estrangeira} e simuladores. Jogos de corrida com o apelo dinâmico de \textit{Mario Kart}\index{Língua estrangeira}, especialmente aqueles com elementos culturais que reflitam a identidade brasileira, são raros ou inexistentes. Esse cenário evidencia uma lacuna que pode ser explorada por desenvolvedores locais, tanto para diversificar o mercado quanto para criar experiências que dialoguem com o público brasileiro.
+
+O presente trabalho contribuirá para esse contexto com o desenvolvimento do  \textit{USP Kart}, um jogo de corrida inspirado em \textit{Mario Kart}\index{Língua estrangeira}, mas com uma identidade fortemente vinculada à Universidade de São Paulo (USP) e ao Instituto de Matemática e Estatística (IME). Além de oferecer uma experiência de jogo envolvente, o projeto também explora soluções tecnológicas inovadoras e visa destacar o potencial criativo da indústria brasileira de jogos. A partir dessa proposta, espera-se não apenas preencher a lacuna existente no mercado, mas também contribuir para o avanço do conhecimento técnico e artístico no desenvolvimento de jogos eletrônicos no Brasil.
+
+\section**{Objetivos}
+\label{sec:consideracoes_preliminares}
+O objetivo principal deste trabalho é desenvolver o \textit{USP Kart}, um jogo eletrônico de corrida inspirado no clássico \textit{Mario Kart}, com características únicas que valorizem a identidade cultural e acadêmica da Universidade de São Paulo (USP). Para alcançar essa meta, os seguintes objetivos específicos são estabelecidos:
+\begin{itemize}
+\item Criar uma experiência de jogo imersiva e divertida, utilizando mecânicas de corrida e combate dinâmicas que remetam a jogos consagrados do gênero, como Mario Kart.
+
+\item Desenvolver a estética do jogo com temática inspirada na USP, com ênfase especial no Instituto de Matemática e Estatística (IME), incluindo referências visuais e conceituais à mascote Fluffy e outros elementos distintivos.
+
+\item Implementar tecnologias modernas de computação gráfica e inteligência artificial para garantir a qualidade técnica e inovadora do jogo.
+
+\item Explorar o potencial de jogos eletrônicos para destacar a cultura universitária brasileira e preencher lacunas no mercado nacional de jogos eletrônicos.
+\end{itemize}
+
+\enlargethispage{.5\baselineskip}
+
+\section**{Metodologia}
+
+O desenvolvimento do \textit{USP Kart} seguirá uma abordagem estruturada que combina aspectos técnicos e criativos. O trabalho será conduzido em etapas distintas, conforme descrito a seguir\:
+
+\begin{itemize}
+
+\item \textbf{Criação de um motor gráfico do zero em C++:} o jogo será desenvolvido utilizando um motor gráfico proprietário, desenvolvido especificamente para atender às necessidades do projeto. Essa abordagem permitirá maior controle sobre os detalhes técnicos e possibilitará a exploração de funcionalidades customizadas.
+    
+\item \textbf{Utilização do OpenGL:} o OpenGL será empregado como base para a renderização gráfica, garantindo alto desempenho e flexibilidade no desenvolvimento dos recursos visuais do jogo. A escolha dessa tecnologia permite a criação de gráficos 3D imersivos e de alta qualidade.
+    
+\item \textbf{Suporte multiplataforma:} o jogo será projetado para ser compatível com múltiplos sistemas operacionais, incluindo Windows, macOS e Linux. Isso será alcançado por práticas de programação portáveis e pela utilização de bibliotecas compatíveis com diferentes plataformas.
+    
+\item \textbf{Integração de elementos estéticos e culturais:} durante o desenvolvimento, será dado um enfoque especial à estilização do jogo com temas relacionados à USP e ao IME, criando uma identidade visual e narrativa que destaque elementos culturais e acadêmicos.
+    
+\end{itemize}
+    
+Essa metodologia visa assegurar que o \textit{USP Kart} seja tecnicamente robusto, esteticamente atrativo e acessível a um público diversificado.
