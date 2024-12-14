@@ -1,0 +1,91 @@
+\chapter{Desenvolvimento do USP Kart}
+
+No desenvolvimento do USP Kart, foram utilizadas diversas ferramentas e tecnologias para a implementação de um jogo de corrida estilo \textit{Kart} em 2.5D, com gráficos 3D e lógica bidimensional. Neste capítulo, serão apresentadas as principais ferramentas e tecnologias utilizadas, bem como a implementação de cada uma delas.
+
+Primeiramente é necessário destacar que para que tudo fosse implementado foram necessários mais de uma categoria de padrão de projeto, como o \textit{Singleton}, por exemplo, este sendo o mais citado pelos gerenciadores e controladores de recursos, para serem acessados de qualquer lugar do código.
+
+Também é importante destacar que o desenvolvimento do jogo foi feito em C++, utilizando de diversas bibliotecas e \textit{frameworks} para a implementação de cada parte do jogo, como o OpenGL para a renderização dos gráficos, o OpenAL para a reprodução de áudios, o Assimp para a importação de modelos 3D, entre outros.
+
+Já que a linguagem C++ foi escolhida foi utilizado de paralelismo para a execução de várias tarefas, em destaque a separação da lógica do jogo e a renderização dos gráficos, para que o jogo possa ser o mais otimizado possível.
+
+\section{Ferramentas desenvolvidas}
+
+Como o jogo não possui um motor de jogo, foi necessário implementar diversas ferramentas e sistemas para ser desenvolvido. Dentre as principais estão o gerenciador de recursos, o gerenciador de configurações gráficas, o registrador de mensagens, o sistema gráfico e a classe de dados.
+
+\subsection{Gerenciador de recursos}
+
+O gerenciador de recursos foi implementado principalmente para garantir que todos os recursos fossem carregados e processados uma única vez, ou seja, um modelo em 3D de um kart não seria carregado mais de uma vez, evitando assim a duplicação de dados e economizando memória. Para isso, o gerenciador de recursos foi implementado com o padrão de projeto \textit{Singleton}, para que possa ser acessado de qualquer lugar do código e garantir que somente uma instância seja criada.
+
+O funcionamento disso se dá através de um \textit{map} que armazena todos os recursos carregados, e ao requisitar um recurso, o gerenciador verifica se ele já foi carregado, e caso não tenha sido, ele é carregado e armazenado no \textit{map}.
+
+\subsubsection{Texturas}
+
+As texturas são um dos recursos carregados pelo gerenciador. Para implementar essa lógica foi criado uma classe \textit{Texture} que armazena o ID da textura, o caminho do arquivo, tipo da textura, tamanho, quantidade de canais e o dado bruto (utilizado somente pelo OpenGL).
+
+\subsubsection{Ícones}
+
+Também no gerenciador de recursos foi implementado o carregamento de ícones, apesar de não ser tão necessário, pois não é preciso carregar mais de uma vez, foi implementado para manter a consistência do código, uma vez tão semelhante ao carregamento de texturas.
+
+Apesar da semelhança vale lembrar que os ícones são mais simples que texturas, é salvo somente seus dados brutos, mas mesmo assim, também para garantir uma boa organização, facilitando não só o armazenamento dos dados, mas a consistência entre diferentes plataformas. 
+
+Já que o USP Kart foi desenvolvido em duas máquinas, uma com Windows e outra com Linux, foi necessário tratar diferentemente, principalmente por dificuldades com a lógica de ícones no \textit{Wayland}, servidor gráfico padrão do Linux.
+
+\subsubsection{Modelos 3D}
+\subsubsection{Áudios}
+
+\subsection{Gerenciador de configurações gráficas}
+
+\subsection{Registrador de mensagens}
+\subsubsection{Fila}
+\subsubsection{Escrita em arquivo}
+
+\subsection{Sistema de interface gráfica}
+\subsubsection{Fila}
+\subsubsection{Texto}
+
+\subsection{Classe de dados}
+
+\section{Gráficos com OpenGL}
+\subsection{Criação de janela}
+\subsection{Shaders}
+\subsection{Texturas}
+\subsection{Modelos 3D}
+\subsection{Skybox}
+\subsection{Animação}
+
+\section{Mapa}
+\subsection{Modelagem do mapa}
+\subsection{Controlador do mapa}
+\subsection{Pontos de controle}
+
+\section{Lógica por objetos}
+\subsection{Modelos de objetos}
+\subsection{Transformações}
+
+\section{Modelagem dos karts}
+\subsection{Bicycle model}
+\subsection{Implementação das rodas}
+
+\section{Física}
+\subsection{Objetos estáticos}
+\subsection{Objetos com física}
+
+\subsection{Movimentação}
+\subsubsection{Força}
+\subsubsection{Aceleração}
+
+\subsection{Colisão}
+\subsubsection{Detecção de colisão}
+\subsubsection{Resolução de colisão}
+
+\subsection{Limitação com o mapa}
+
+\section{Personagens}
+
+\subsection{Jogador}
+\subsubsection{Controles}
+
+\subsection{Inteligência artificial}
+\subsubsection{Visão do ambiental}
+\subsubsection{Tomada de decisão}
+\subsubsection{Modelo Elástico}
