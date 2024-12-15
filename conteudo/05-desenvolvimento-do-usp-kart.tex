@@ -8,6 +8,8 @@ Também é importante destacar que o desenvolvimento do jogo foi feito em C++, u
 
 Já que a linguagem C++ foi escolhida foi utilizado de paralelismo para a execução de várias tarefas, em destaque a separação da lógica do jogo e a renderização dos gráficos, para que o jogo possa ser o mais otimizado possível.
 
+O desenvolvimento foi realizado em duas máquinas, uma com Windows 11 e outra com Fedora Linux 41 (Worksation), ou seja, tudo o que foi desenvolvido deve ser compatível com ambos os sistemas operacionais.
+
 \section{Ferramentas desenvolvidas}
 
 Como o jogo não possui um motor de jogo, foi necessário implementar diversas ferramentas e sistemas para ser desenvolvido. Dentre as principais estão o gerenciador de recursos, o gerenciador de configurações gráficas, o registrador de mensagens, o sistema gráfico e a classe de dados.
@@ -28,11 +30,11 @@ Também no gerenciador de recursos foi implementado o carregamento de ícones, a
 
 Apesar da semelhança vale lembrar que os ícones são mais simples que texturas, é salvo somente seus dados brutos, mas mesmo assim, também para garantir uma boa organização, facilitando não só o armazenamento dos dados, mas a consistência entre diferentes plataformas. 
 
-Já que o USP Kart foi desenvolvido em duas máquinas, uma com Windows e outra com Linux, foi necessário tratar diferentemente, principalmente por dificuldades com a lógica de ícones no \textit{Wayland}, servidor gráfico padrão do Linux.
+Já que o \textit{USP Kart} foi desenvolvido em duas máquinas, uma com Windows 11 e outra com Fedora Linux 41 (Workstation), foi necessário tratar diferentemente, principalmente por dificuldades com a lógica de ícones no \textit{Wayland}, servidor gráfico padrão do Linux.
 
 \subsubsection{Modelos 3D}
 
-Modelos no USP Kart foram importados utilizando a biblioteca Assimp, que é uma biblioteca de código aberto que permite a importação de modelos 3D de diversos formatos, como \textit{.obj}, \textit{.fbx}, \textit{.dae}, entre outros. No USP Kart, os modelos foram importados no formato \textit{.obj}, que é um formato simples e amplamente utilizado, além de que foi mais fácil de ser implementado uma vez que foi utilizado o programa \textit{Blockbench} para a modelagem dos personagens e karts.
+Modelos no \textit{USP Kart} foram importados utilizando a biblioteca Assimp, que é uma biblioteca de código aberto que permite a importação de modelos 3D de diversos formatos, como \textit{.obj}, \textit{.fbx}, \textit{.dae}, entre outros. No USP Kart, os modelos foram importados no formato \textit{.obj}, que é um formato simples e amplamente utilizado, além de que foi mais fácil de ser implementado uma vez que foi utilizado o programa \textit{Blockbench} para a modelagem dos personagens e karts.
 
 Nessa classe de dados temos o que o Assimp chama comumente de \textit{mesh}, que é a malha do modelo, utilizado para renderizar o modelo, e o que o Assimp chama de \textit{material}, que é a textura do modelo, utilizado para renderizar a textura.
 
@@ -44,7 +46,7 @@ Os áudios são um dos recursos mais simples de serem carregados, visto que o Op
 
 \subsection{Gerenciador de configurações gráficas}\label{sec:gerenciador-de-configuracoes-graficas}
 
-No desenvolvimento do USP Kart foram encontrados problemas gráficos e foi preciso implementar um gerenciador de configurações gráficas, para que o jogador possa ajustar as configurações gráficas do jogo, como resolução, modo de tela, posicionamento, entre outros.
+No desenvolvimento do \textit{USP Kart} foram encontrados problemas gráficos e foi preciso implementar um gerenciador de configurações gráficas, para que o jogador possa ajustar as configurações gráficas do jogo, como resolução, modo de tela, posicionamento, entre outros.
 
 As configurações são muito simples e armazenadas em um arquivo \textit{config.json} de configuração, não sendo acessível normalmente por uma interface gráfica, somente pelo arquivo em si e por meio de controles de janela, como redimensionar e mover, o que salva automaticamente as configurações.
 
@@ -52,7 +54,7 @@ O gerenciador também é um \textit{Singleton}, para garantir que somente uma in
 
 \subsection{Registrador de mensagens}
 
-É muito comum em motores de jogo terem um sistema de mensagens, muito útil para depurar o código e encontrar possíveis erros. No USP Kart foi implementado um sistema de mensagens, com níveis de importância, para que o desenvolvedor possa encontrar possíveis erros no código, aonde o sistema de mensagens é um \textit{Singleton}.
+É muito comum em motores de jogo terem um sistema de mensagens, muito útil para depurar o código e encontrar possíveis erros. No \textit{USP Kart} foi implementado um sistema de mensagens, com níveis de importância, para que o desenvolvedor possa encontrar possíveis erros no código, aonde o sistema de mensagens é um \textit{Singleton}.
 
 Cada mensagem contém um registro da hora em que a mensagem foi enviada, um nível de importância, o arquivo e linha onde foi chamada, além do texto. O sistema de mensagens é muito simples, mas muito eficaz, e implementado para que o desenvolvedor possa encontrar possíveis erros no código, sem a necessidade de depurar o código.
 
@@ -128,7 +130,7 @@ Toda a lógica foi pensada em como o Assimp gerencia os modelos, e como o OpenGL
 
 O \textit{Skybox} é uma técnica utilizada para simular um céu em jogos 3D, composto por seis texturas, uma para cada face de um cubo, que são renderizadas ao redor do jogador, criando a ilusão de um céu infinito. No USP Kart, o \textit{Skybox} foi implementado utilizando seis texturas de um céu azul, renderizadas ao redor do jogador, criando a ilusão de um céu infinito.
 
-Existem outras formas de se implementar um \textit{Skybox}, como utilizando um cilindro ou uma esfera, mas no USP Kart foi utilizado um cubo, por ser mais simples e mais fácil de implementar, e por ser mais eficiente em desempenho.
+Existem outras formas de se implementar um \textit{Skybox}, como utilizando um cilindro ou uma esfera, mas no \textit{USP Kart} foi utilizado um cubo, por ser mais simples e mais fácil de implementar, e por ser mais eficiente em desempenho.
 
 \subsection{Animação}
 
@@ -136,7 +138,7 @@ Basicamente os objetos são todos estáticos, mas eles podem ter outros modelos 
 
 \section{Mapa}
 
-O mapa foi feito da maneira o mais simples o possível, com um objeto de quatro vértices, fazendo assim um plano quadrado de 256x256 unidades de tamanho, colocado no plano XZ, foi pego uma textura do mapa \textit{Donut Plains 1} do \textit{Mario Kart} (\cite{marioKart}), e aplicado no objeto.
+O mapa utilizado é completamente em 2D, sendo composto basicamente por uma textura sólida com uma pista desenhada. Ele não foi criado pelo desenvolvedor, mas teve de ser adaptado para o jogo. Esse mapa em específico se chama \textit{Donut Plains 1}, do \textit{Mario Kart} (\cite{marioKart}). O mapa é composto por um caminho principal e alguns atalhos, que podem ser utilizados para ganhar vantagem na corrida. Os atalhos são sutis e podem custar tempo se não forem utilizados corretamente.
 
 \subsection{Modelagem do mapa}
 
@@ -488,4 +490,4 @@ Para que o jogo fique dinâmico, foi implementado um modelo elástico, que é um
 
 A cada iteração lógica do jogo temos um cálculo simples de diferença de 'pontuação' (proximidade do ponto de partida) entre o corredor e o jogador, e com isso é calculado uma velocidade adicional para o corredor, que é somada à velocidade atual, diminuindo a diferença entre os corredores.
 
-Essa tática foi muito usada em jogos de corrida (veja em: \cite{rubberBandAi}) para que o jogo seja mais dinâmico e divertido, e foi implementado no USP Kart pelo mesmo motivo.
+Essa tática foi muito usada em jogos de corrida (veja em: \cite{rubberBandAi}) para que o jogo seja mais dinâmico e divertido, e foi implementado no \textit{USP Kart} pelo mesmo motivo.
