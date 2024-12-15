@@ -18,7 +18,7 @@ jobs:
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
-          name: PDF
+          name: tese.pdf
           path: tese.pdf
       - name: Checkout code
         uses: actions/checkout@v4
