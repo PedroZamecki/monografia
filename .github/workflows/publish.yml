@@ -56,4 +56,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.new_tag }}
         run: |
-          gh release upload "$tag" tese.pdf
+          gh release upload "$tag" PDF/tese.pdf
