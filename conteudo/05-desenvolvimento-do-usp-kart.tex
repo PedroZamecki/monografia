@@ -154,8 +154,6 @@ Já um \textit{Skybox} é uma aplicação específica de um \textit{cubemap}. El
 
 O \textit{Skybox} utiliza o conceito de \textit{cubemap} para mapear texturas de céu ou ambiente nas seis faces de um cubo. Quando o jogador se move dentro do jogo, o \textit{Skybox} se move com ele, mantendo a ilusão de um ambiente infinito. As texturas são projetadas de forma que se encaixem perfeitamente nas bordas, criando uma transição suave entre as faces do cubo.
 
-Existem várias formas de se implementar um \textit{Skybox}, mas a mais comum é usar um \textit{cubemap} com seis texturas separadas e essa foi a forma utilizada no \textit{USP Kart}.
-
 A representação visual do \textit{Skybox} pode ser vista na Figura \ref{fig:skybox}.
 
 \begin{figure}[H]
@@ -164,6 +162,48 @@ A representação visual do \textit{Skybox} pode ser vista na Figura \ref{fig:sk
     \caption{Como funciona um \textit{cubemap} (ou \textit{Skybox}). Fonte da imagem: \cite{skybox}}
     \footnotesize{O ponto central é a posição do jogador, ou da câmera, e as seis texturas são renderizadas ao redor do jogador, criando a ilusão de um céu infinito.}
     \label{fig:skybox}
+\end{figure}
+
+Existem várias formas de se implementar um \textit{Skybox}, mas a mais comum é usar um \textit{cubemap} com seis texturas separadas e essa foi a forma utilizada no \textit{USP Kart}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/front.jpg}
+        \caption{Frente do \textit{Skybox}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/back.jpg}
+        \caption{Trás do \textit{Skybox}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/left.jpg}
+        \caption{Esquerda do \textit{Skybox}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/right.jpg}
+        \caption{Direita do \textit{Skybox}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/top.jpg}
+        \caption{Cima do \textit{Skybox}.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/bottom.jpg}
+        \caption{Baixo do \textit{Skybox}.}
+    \end{subfigure}
+    \caption{Texturas utilizadas para o \textit{Skybox} do \textit{USP Kart}.}
 \end{figure}
 
 \subsection{Animação}
@@ -264,7 +304,7 @@ Para a representação visual dos karts foi utilizado um modelo do kart propriam
         \label{fig:rodas}
     \end{subfigure}
     \caption{Modelos do kart e das rodas.}
-    \footnotesize{A figura \textbf{(a)} mostra o modelo do kart roda alguma, enquanto a figura \textbf{(b)} mostra o modelo das rodas separadamente.}
+    \footnotesize{A figura \textbf{(a)} mostra o modelo do kart sem roda alguma, enquanto a figura \textbf{(b)} mostra o modelo das rodas separadamente.}
     \label{fig:kart-rodas}
 \end{figure}
 
