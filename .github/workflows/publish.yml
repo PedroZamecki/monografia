@@ -15,10 +15,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: tese.tex
+      - name: Check the files in the directory
+        run: ls -la
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
-          name: tese.pdf
+          name: PDF
           path: tese.pdf
       - name: Checkout code
         uses: actions/checkout@v4
@@ -49,4 +51,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.new_tag }}
         run: |
-          gh release upload "$tag" tese.pdf
+          gh release upload "$tag" PDF.zip
