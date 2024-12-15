@@ -42,13 +42,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.new_tag }}
         run: |
-          gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${tag#v}" \
-              --generate-notes
+          if gh release view "$tag"; then
+            echo "Release already exists"
+            exit 0
+          else
+            gh release create "$tag" \
+                --repo="$GITHUB_REPOSITORY" \
+                --title="${tag#v}" \
+                --generate-notes
+          fi
       - name: Upload PDF to Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ env.new_tag }}
         run: |
-          gh release upload "$tag" PDF.zip
+          gh release upload "$tag" tese.pdf
