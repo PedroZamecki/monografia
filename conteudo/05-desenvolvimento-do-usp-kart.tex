@@ -72,7 +72,14 @@ Dessa forma, caso ocorra um erro fatal, responsável por matar o processo, as me
 
 \subsection{Sistema de interface gráfica}
 
-A interface gráfica do jogo foi o mais simples o possível, por dificuldades técnicas, mas também por escolha do desenvolvedor de usar a biblioteca ImGUI. Ela é composta por um texto no canto superior esquerdo da tela, que mostra a posição do jogador e a quantidade de quadros por segundo sendo desenhados, e um texto no canto superior direito da tela, que mostra a quantidade de voltas completadas.
+A interface gráfica do jogo foi a mais simples o possível, por dificuldades técnicas, mas também por escolha do desenvolvedor de usar a biblioteca ImGUI. Ela é composta por um texto no canto superior esquerdo da tela, que mostra a posição do jogador e a quantidade de quadros por segundo sendo desenhados, e um texto no canto superior direito da tela, que mostra a quantidade de voltas completadas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/Interface Gráfica.png}
+    \footnotesize{Na interface gráfica do USP Kart, o texto no canto superior esquerdo mostra a posição do jogador e a quantidade de quadros por segundo, enquanto o texto no canto superior direito mostra a quantidade de voltas completadas.}
+    \caption{Interface gráfica do USP Kart.}
+\end{figure}
 
 O sistema de interface gráfica é um \textit{Singleton}, como vários outros sistemas, para garantir que somente uma instância seja criada e gerenciada de forma correta. A interface gráfica é muito simples, mas muito eficaz, e implementada para que o jogador possa acompanhar a corrida e a quantidade de voltas completadas.
 
@@ -105,6 +112,17 @@ Para criar janelas o GLFW foi utilizado, nele é possível criar janelas, gerenc
 
 Para gerenciar os controles foi criado um sistema para isso, um \textit{Singleton} responsável por armazenar funções a serem executadas quando uma tecla é pressionada, funciona por um sistema de filas que, ao pressionar uma tecla, executa todas as funções armazenadas na fila associadas aquele botão.
 
+Atualmente temos os seguintes controles implementados:
+
+\begin{itemize}
+    \item \textbf{Setas direcionais}: Movimentação do kart
+    \item \textbf{Esc}: Fechar o jogo
+    \item \textbf{T}: Imprimir visão do mapa do jogador com o caminho mais curto
+    \item \textbf{TAB}: Trocar a visão do jogador
+    \item \textbf{B}: Mostrar caixas de colisão (para depuração)
+    \item \textbf{P}: Imprimir informações do jogador (para depuração)
+\end{itemize}
+
 \subsection{Shaders}
 
 Os \textit{shaders} são programas escritos em GLSL, uma linguagem de programação de alto nível para shaders, executados na GPU e controlam a renderização dos gráficos. No USP Kart, foram utilizados dois \textit{shaders}, um para a renderização dos objetos e outro para depuração das caixas de colisão.
@@ -124,13 +142,29 @@ Os modelos 3D são importados utilizando a biblioteca Assimp, que é uma bibliot
 
 Os modelos 3D são compostos por \textit{meshes}, que são as malhas do modelo, e \textit{materials}, são as texturas do modelo. Para renderizar os modelos 3D, é necessário passar as malhas e texturas para o OpenGL, responsável renderizar os modelos na tela.
 
-Toda a lógica foi pensada em como o Assimp gerencia os modelos, e como o OpenGL renderiza os modelos, para que a implementação seja o mais otimizada possível, e o jogo seja o mais rápido e dinâmico possível.
+Toda a lógica foi pensada em como o Assimp gerencia os modelos, e como o OpenGL renderiza os modelos, para que a implementação seja a mais otimizada possível, e o jogo seja o mais rápido e dinâmico possível.
 
 \subsection{Skybox}
 
-O \textit{Skybox} é uma técnica utilizada para simular um céu em jogos 3D, composto por seis texturas, uma para cada face de um cubo, que são renderizadas ao redor do jogador, criando a ilusão de um céu infinito. No USP Kart, o \textit{Skybox} foi implementado utilizando seis texturas de um céu azul, renderizadas ao redor do jogador, criando a ilusão de um céu infinito.
+Um \textit{cubemap} é uma técnica de mapeamento de textura usada em gráficos 3D para simular ambientes. Ele consiste em seis texturas quadradas que representam as faces de um cubo. Essas texturas são mapeadas de forma que, quando aplicadas a um objeto, criam a ilusão de um ambiente tridimensional ao redor desse objeto.
 
-Existem outras formas de se implementar um \textit{Skybox}, como utilizando um cilindro ou uma esfera, mas no \textit{USP Kart} foi utilizado um cubo, por ser mais simples e mais fácil de implementar, e por ser mais eficiente em desempenho.
+As seis faces do \textit{cubemap} são: Frente (\textit{front}); Trás (\textit{back}); Esquerda (\textit{left}); Direita (\textit{right}); Cima (\textit{top}) e Baixo (\textit{bottom})
+
+Já um \textit{Skybox} é uma aplicação específica de um \textit{cubemap}. Ele é usado para criar a ilusão de um céu ou ambiente infinito ao redor do jogador em um jogo 3D. No caso do \textit{Skybox}, as seis texturas do \textit{cubemap} são renderizadas ao redor do jogador, formando um cubo que encapsula a cena. Isso dá a impressão de que o jogador está em um ambiente vasto e contínuo, mesmo que o mundo do jogo seja limitado.
+
+O \textit{Skybox} utiliza o conceito de \textit{cubemap} para mapear texturas de céu ou ambiente nas seis faces de um cubo. Quando o jogador se move dentro do jogo, o \textit{Skybox} se move com ele, mantendo a ilusão de um ambiente infinito. As texturas são projetadas de forma que se encaixem perfeitamente nas bordas, criando uma transição suave entre as faces do cubo.
+
+Existem várias formas de se implementar um \textit{Skybox}, mas a mais comum é usar um \textit{cubemap} com seis texturas separadas e essa foi a forma utilizada no \textit{USP Kart}.
+
+A representação visual do \textit{Skybox} pode ser vista na Figura \ref{fig:skybox}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figuras/Skybox.png}
+    \caption{Como funciona um \textit{cubemap} (ou \textit{Skybox}). Fonte da imagem: \cite{skybox}}
+    \footnotesize{O ponto central é a posição do jogador, ou da câmera, e as seis texturas são renderizadas ao redor do jogador, criando a ilusão de um céu infinito.}
+    \label{fig:skybox}
+\end{figure}
 
 \subsection{Animação}
 
@@ -147,11 +181,11 @@ Para que o mapa fosse utilizável foi necessário traduzi-lo para uma imagem em 
 
 Também conhecido como 'ponto de checagem', o ponto de controle serve para verificar se o jogador está no caminho correto, ou seja, esteja progredindo e se aproximando da linha de chegada. No USP Kart, os pontos de controle são invisíveis ao jogador, mas a lógica de todos os personagens (controlados pelo jogador ou não) conhecem e baseam-se neles para saber sua posição relativa ao mapa.
 
-\subsection{Controlador do mapa}
+\subsection{Controlador do mapa}\label{sec:controlador-do-mapa}
 
 Para gerenciar tudo o que é relacionado ao mapa, foi elaborado um controlador, onde sua responsabilidade é traduzir coordenadas do mundo para coordenadas do mapa, e vice-versa, além de verificar se um ponto está no mapa, e buscar caminhos de um ponto a um ponto de controle (em inglês, \textit{checkpoint}).
 
-O que os personagens (em inglês, \textit{characters}) pedem para o controlador é mostrar qual o caminho mais próximo para o próximo ponto de controle, e o mesmo retorna o caminho, uma lista de pontos, que o personagem deve seguir para chegar ao ponto de controle.
+O que os personagens (em inglês, \textit{characters}) pedem para o controlador é mostrar qual o caminho mais próximo para o próximo ponto de controle, e o mesmo retorna o caminho e seu custo, uma lista de pontos, que o personagem deve seguir para chegar ao ponto de controle.
 
 Uma representação visual do que o personagem deve seguir pode ser desenhado pelo programa, segue o exemplo:
 
@@ -214,6 +248,26 @@ O OpenGL trabalha com matrizes, e para que um objeto seja renderizado na tela, �
 
 Para a representação visual dos karts foi utilizado um modelo do kart propriamente dito sem as rodas, e separadamente outro modelo somente das rodas, já que a animação do jogo procedural é feita pela lógica do jogo, e não pela animação do modelo.
 
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{figuras/Fluffy.png}
+        \caption{Modelo do kart sem rodas.}
+        \label{fig:kart}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1\textwidth]{figuras/Modelo da roda.png}
+        \caption{Modelo das rodas.}
+        \label{fig:rodas}
+    \end{subfigure}
+    \caption{Modelos do kart e das rodas.}
+    \footnotesize{A figura \textbf{(a)} mostra o modelo do kart roda alguma, enquanto a figura \textbf{(b)} mostra o modelo das rodas separadamente.}
+    \label{fig:kart-rodas}
+\end{figure}
+
 \subsection{Bicycle model}
 
 Para essa representação visual foi utilizado do modelo \textit{bicycle model}, representação que considera a separação do carro (ou no caso, kart) em duas rodas, a dianteira e a traseira.
@@ -235,7 +289,6 @@ A simplificação do modelo reduz a complexidade computacional, ideal para uso e
     \footnotesize{Fonte da imagem: \cite{bicycleModel}}
     \label{fig:bicycle-model}
 \end{figure}
-\pagebreak
 
 \begin{programruledcaption}{Código de atualização do modelo de bicicleta (\textit{Bicycle Model}).\label{prog:bicycle}}
     \begin{lstlisting}[
@@ -284,7 +337,7 @@ Para implementar a física do jogo foi necessário adicionar uma quantidade de m
 
 Esses objetos não têm massa, são os objetos padrões do jogo, não se pode fazer alteração nenhuma a eles, já que seus métodos de movimentação são vazios, sendo necessário sobrescrevê-los para que alguma ação seja efetuada, dessa forma, não é preciso fazer muitas checagens ao interagir com a física do jogo, economizando tempo e memória.
 
-\begin{programruledcaption}{Métodos da classe \textit{Object} vazios para objetos estáticos.\label{prog:mdc}}
+\begin{programruledcaption}{Métodos da classe \textit{Object} vazios para objetos estáticos.\label{prog:object-methods}}
     \begin{lstlisting}[
       language={C++},
       style=wider,
@@ -311,7 +364,7 @@ Esses objetos não têm massa, são os objetos padrões do jogo, não se pode fa
 
 Esses objetos são uma extensão dos objetos estáticos, mas com a adição de massa, inércia e aceleração, além de que a cada iteração do cálculo de jogo, a força é aplicada ao objeto, a aceleração é calculada, a velocidade é atualizada e finalmente a posição é atualizada.
 
-Para implementar isso foi utilizado uma quantidade mínima de código, simplesmente sobrescrevendo os métodos da classe \textit{Object} (mostrados em \ref{code:object-methods}) e adicionando a lógica de física, como a aplicação de força, cálculo de aceleração, atualização de velocidade e posição, entre outros.
+Para implementar isso foi utilizado uma quantidade mínima de código, simplesmente sobrescrevendo os métodos da classe \textit{Object} (mostrados em \ref{prog:object-methods}) e adicionando a lógica de física, como a aplicação de força, cálculo de aceleração, atualização de velocidade e posição, entre outros.
 
 \subsection{Movimentação}
 
@@ -429,7 +482,7 @@ As teclas utilizadas foram as mais padrões, as setas direcionais para direção
 
 \subsection{Inteligência artificial}
 
-Também é uma extensão do personagem, mas com a adição de uma lógica de própria. Esse corredor é utiliza dos mesmos dados (de caminho e pontuação) que consegue da busca do caminho mais curto para o próximo ponto de controle.
+Também é uma extensão do personagem, mas com a adição de uma lógica própria. Esse corredor utiliza o caminho mais curto e sua pontuação obtida no cálculo do caminho mais curto (veja: \ref{sec:controlador-do-mapa}) para saber qual a melhor ação a ser tomada.
 
 Com mais uma \textit{thread} separada para a lógica de mudança de estado do personagem não jogável, ele consegue se movimentar de forma autônoma, sem a necessidade de interação do jogador.
 
