@@ -1,0 +1,50 @@
+name: Compile LaTeX document
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up LaTeX environment
+      uses: dante-ev/latex-action@v2
+
+    - name: Compile LaTeX document
+      run: latexmk -pdf -interaction=nonstopmode -file-line-error tese.tex
+
+    - name: Upload PDF as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: tese
+        path: tese.pdf
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v1.0.0
+        release_name: Release v1.0.0
+        draft: false
+        prerelease: false
+
+    - name: Upload PDF to Release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: tese.pdf
+        asset_name: tese.pdf
+        asset_content_type: application/pdf
