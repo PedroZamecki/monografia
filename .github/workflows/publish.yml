@@ -25,24 +25,20 @@ jobs:
       - name: Get latest release tag
         id: get_latest_release
         run: |
-          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          latest_tag=$(git describe --tags `git rev-list --tags --max-count=1` 2>/dev/null || echo "v0.0.0")
           echo "Latest tag: $latest_tag"
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
       - name: Increment version
         id: increment_version
         run: |
-          if [ -z "$latest_tag" ]; then
-            new_tag="v1.0.0"
-          else
-            new_tag=$(echo $latest_tag | awk -F. -v OFS=. '{$NF++;print}')
-          fi
+          new_tag=$(echo $latest_tag | awk -F. -v OFS=. '{$NF++;print}')
           echo "New tag: $new_tag"
           echo "new_tag=$new_tag" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.increment_version.outputs.new_tag }}
+          tag: ${{ env.new_tag }}
         run: |
           gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
@@ -51,6 +47,6 @@ jobs:
       - name: Upload PDF to Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.increment_version.outputs.new_tag }}
+          tag: ${{ env.new_tag }}
         run: |
           gh release upload "$tag" tese.pdf
