@@ -21,20 +21,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Create Release
         id: create_release
-        uses: comnoco/create-release@v2
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
-            draft: false
-            prerelease: false
-      - name: Upload PDF to Release
-        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: tese.pdf
-          asset_name: tese.pdf
-          asset_content_type: application/pdf
+        run: |
+          gh release create "$tag" \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${tag#v}" \
+              --generate-notes
+      - name: Upload PDF to Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "$tag" tese.pdf
