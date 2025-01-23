@@ -6,7 +6,7 @@ Primeiramente é necessário destacar que para que tudo fosse implementado foram
 
 Também é importante destacar que o desenvolvimento do jogo foi feito em C++, utilizando de diversas bibliotecas e \textit{frameworks} para a implementação de cada parte do jogo, como o OpenGL para a renderização dos gráficos, o OpenAL para a reprodução de áudios, o Assimp para a importação de modelos 3D, entre outros.
 
-Já que a linguagem C++ foi escolhida foi utilizado de paralelismo para a execução de várias tarefas, em destaque a separação da lógica do jogo e a renderização dos gráficos, para que o jogo possa ser o mais otimizado possível.
+Como a linguagem C++ foi escolhida, utilizou-se paralelismo para a execução de várias tarefas, destacando-se a separação da lógica do jogo e a renderização dos gráficos, para que o jogo seja o mais otimizado possível.
 
 O desenvolvimento foi realizado em duas máquinas, uma com Windows 11 e outra com Fedora Linux 41 (Worksation), ou seja, tudo o que foi desenvolvido deve ser compatível com ambos os sistemas operacionais.
 
@@ -53,8 +53,7 @@ As configurações são muito simples e armazenadas em um arquivo \textit{config
 O gerenciador também é um \textit{Singleton}, para garantir que somente uma instância seja criada e que as configurações sejam as mesmas em todo o jogo, além disso, caso o programa quebre por qualquer motivo que seja temos um controlador que garante que mesmo assim as configurações sejam salvas.
 
 \subsection{Registrador de mensagens}
-
-É muito comum em motores de jogo terem um sistema de mensagens, muito útil para depurar o código e encontrar possíveis erros. No \textit{USP Kart} foi implementado um sistema de mensagens, com níveis de importância, para que o desenvolvedor possa encontrar possíveis erros no código, aonde o sistema de mensagens é um \textit{Singleton}.
+É muito comum em motores de jogo haver um sistema de mensagens, muito útil para depurar o código e encontrar possíveis erros. No \textit{USP Kart} foi implementado um sistema de mensagens, com níveis de importância, para que o desenvolvedor possa encontrar possíveis erros no código, aonde o sistema de mensagens é um \textit{Singleton}.
 
 Cada mensagem contém um registro da hora em que a mensagem foi enviada, um nível de importância, o arquivo e linha onde foi chamada, além do texto. O sistema de mensagens é muito simples, mas muito eficaz, e implementado para que o desenvolvedor possa encontrar possíveis erros no código, sem a necessidade de depurar o código.
 
@@ -66,7 +65,7 @@ Isso foi implementado usando o que é chamado \textit{mutex}, um mecanismo de si
 
 \subsubsection{Escrita em arquivo}
 
-Como no sistema era bem comum que problemas no desenvolvimento fossem encontrados, matando o processo do jogo e dificultando a depuração. Para isso, foi implementado um sistema de escrita em arquivo, para que as mensagens fossem salvas em um arquivo padronizado por data, como '\textit{\{ano\}\{mês\}\{dia\}.log}' (por exemplo: \textit{20241201.log} para o dia 01/12/2024).
+Era comum que no sistema fossem encontrados problemas no desenvolvimento, matando o processo do jogo e dificultando a depuração. Assim, foi implementado um sistema de escrita em arquivo, para que as mensagens fossem salvas em um arquivo padronizado por data, como '\textit{\{ano\}\{mês\}\{dia\}.log}' (por exemplo: \textit{20241201.log} para o dia 01/12/2024).
 
 Dessa forma, caso ocorra um erro fatal, responsável por matar o processo, as mensagens são salvas em um arquivo, permitindo que o desenvolvedor possa encontrar o erro e corrigi-lo.
 
@@ -76,7 +75,7 @@ A interface gráfica do jogo foi a mais simples o possível, por dificuldades t�
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figuras/Interface Gráfica.png}
+    \includegraphics[width=\textwidth]{figuras/Interface Gráfica.png}
     \footnotesize{Na interface gráfica do USP Kart, o texto no canto superior esquerdo mostra a posição do jogador e a quantidade de quadros por segundo, enquanto o texto no canto superior direito mostra a quantidade de voltas completadas.}
     \caption{Interface gráfica do USP Kart.}
 \end{figure}
@@ -133,7 +132,7 @@ Para implementar uma lógica mais alto nível para a manipulação dos \textit{s
 
 As texturas também são gerenciados pelo OpenGL, mas para facilitar a manipulação das texturas, foi criado uma classe \textit{Texture}, que armazena dados como ID da textura, caminho do arquivo, tipo da textura, tamanho, quantidade de canais e o dado bruto (utilizado somente pelo OpenGL).
 
-O gerenciador de recursos é responsável por carregar e armazenar as texturas, como falado anteriormente, e a classe \textit{Texture} é responsável por manipular as texturas, como carregar, descarregar e renderizar. Ela é principalmente utilizado pelos modelos 3D, que têm texturas associadas ao mesmo.
+O gerenciador de recursos é responsável por carregar e armazenar as texturas, como falado anteriormente, e a classe \textit{Texture} é responsável por manipular as texturas, como carregar, descarregar e renderizar. Ela é principalmente utilizada pelos modelos 3D, que têm texturas associadas ao mesmo.
 
 
 \subsection{Modelos 3D}
@@ -219,7 +218,7 @@ O mapa utilizado é completamente em 2D, sendo composto basicamente por uma text
 Para que o mapa fosse utilizável foi necessário traduzi-lo para uma imagem em tons de cinza, onde quanto mais escuro o ponto, mais fácil é de se passar por ele, e quanto mais claro, mais difícil. O mapa foi modelado para que o jogador não possa passar por pontos (totalmente) brancos, e que a estrada, totalmente preta, seja a forma preferível de se passar.
 \subsection{Pontos de controle}
 
-Também conhecido como 'ponto de checagem', o ponto de controle serve para verificar se o jogador está no caminho correto, ou seja, esteja progredindo e se aproximando da linha de chegada. No USP Kart, os pontos de controle são invisíveis ao jogador, mas a lógica de todos os personagens (controlados pelo jogador ou não) conhecem e baseam-se neles para saber sua posição relativa ao mapa.
+Também conhecido como 'ponto de checagem', o ponto de controle serve para verificar se o jogador está no caminho correto, ou seja, se está progredindo e se aproximando da linha de chegada. No USP Kart, os pontos de controle são invisíveis ao jogador, mas a lógica de todos os personagens (controlados pelo jogador ou não) os conhece e se baseia neles para saber sua posição relativa ao mapa.
 
 \subsection{Controlador do mapa}\label{sec:controlador-do-mapa}
 
@@ -438,7 +437,7 @@ Para o tratamento de colisão foi implementado uma caixa de colisão (em inglês
 
 Para a detecção de colisão foi implementado um sistema de caixas de colisão, que são caixas que envolvem o objeto, e a colisão é detectada pela interseção das caixas de colisão dos objetos, e a detecção é feita a cada iteração do cálculo de jogo.
 
-O algoritmo de detecção é o mais simples o possível, detectando as linhas projetadas em 2D que se interceptam e a detecção é feita a cada iteração do cálculo de jogo. O nome do algoritmo é \textit{Separating Axis Theorem} (SAT), e é amplamente utilizado em jogos 2D.
+O algoritmo de detecção de colisão utilizado é o \textit{Separating Axis Theorem} (SAT), amplamente empregado em jogos 2D. Este algoritmo detecta a interseção das linhas projetadas em 2D e a detecção é realizada a cada iteração do cálculo do jogo.
 
 O teorema SAT, como descrito em \cite{SAT:separatingAxisTheorem}, afirma que dois objetos convexos são disjuntos se existir ao menos um eixo em que as projeções dos dois objetos não se sobreponham. A abordagem consiste em identificar e testar os eixos de separação potenciais, que são definidos pelas normais das faces dos polígonos ou pelos produtos vetoriais entre as arestas dos objetos. Para cada eixo identificado, calculam-se as projeções dos vértices dos objetos e verifica-se se as projeções apresentam interseção. Se não houver sobreposição em pelo menos um eixo, os objetos não colidem.
 
@@ -504,17 +503,17 @@ Eles funcionam por meio de estados, pelo padrão de projeto \textit{State}, e a 
 
 \subsection{Estados}
 
-Ele tem três tipos de estados, o estado de esterço, estado de aceleração e estado de frenagem. Cada estado é responsável por uma ação, e a cada iteração do cálculo de jogo ele reage de acordo, por exemplo, caso o estado de aceleração esteja ativado a cada iteração o personagem recebe uma força que o acelera de acordo.
+Um personagem qualquer (controlado pelo jogador, ou não) tem três tipos de estados, o estado de esterço, estado de aceleração e estado de frenagem. Cada estado é responsável por uma ação, e a cada iteração do cálculo de jogo ele reage de acordo, por exemplo, caso o estado de aceleração esteja ativado a cada iteração o personagem recebe uma força que o acelera de acordo.
 
 \subsection{Jogador}
 
-O jogador é uma extensão do personagem, mas com a adição de controles por teclado. Ele é controlado pelo jogador, e a cada iteração do cálculo de jogo ele reage de acordo com os controles do jogador, e a lógica é dividida em dois tipos de jogadores, o jogador controlado pelo teclado e o jogador controlado pelo controle.
+A classe jogador é uma extensão da classe personagem, mas com a adição de controles por teclado. A cada iteração do cálculo de jogo esse personagem controlado pelo usuário muda seu estado (de esterço, aceleração e frenagem) de acordo com as teclas pressionadas.
 
-Na construção de sua classe é determinado as teclas utilizadas para cada ação, nele temos o que determinamos como 'lógica de mudança de estado', por exemplo, se o jogador pressionar a tecla de aceleração, o fator de estado de aceleração é ativado, e o personagem muda de estado.
+Na sua construção são determinados as teclas utilizadas para cada ação, na classe jogador temos o que determinamos como 'lógica de mudança de estado', por exemplo, se o usuário pressionar a tecla de aceleração, o fator de estado de aceleração é ativado, e o personagem muda de estado.
 
 \subsubsection{Controles}
 
-Para mudar o estado do jogador foi utilizado o gerenciador de controles (ver: \ref{sec:gerenciador-de-controles}), que é um \textit{Singleton} responsável por armazenar funções a serem executadas quando uma tecla é pressionada, funciona por um sistema de filas que, ao pressionar uma tecla, executa todas as funções armazenadas na fila associadas aquele botão.
+Para mudar o estado do jogador foi utilizado o gerenciador de controles, que é um \textit{Singleton} responsável por armazenar funções a serem executadas quando uma tecla é pressionada, funciona por um sistema de filas que, ao pressionar uma tecla, executa todas as funções armazenadas na fila associadas aquele botão.
 
 No caso do jogador ele tem uma espécie de função de chamada (em inglês, \textit{callback}), que é chamada quando a tecla é pressionada, e somente nesse momento, economizando em recursos para não precisar fazer uma checagem constante.
 
@@ -522,13 +521,13 @@ As teclas utilizadas foram as mais padrões, as setas direcionais para direção
 
 \subsection{Inteligência artificial}
 
-Também é uma extensão do personagem, mas com a adição de uma lógica própria. Esse corredor utiliza o caminho mais curto e sua pontuação obtida no cálculo do caminho mais curto (veja: \ref{sec:controlador-do-mapa}) para saber qual a melhor ação a ser tomada.
+Também é uma extensão do personagem, mas com a adição de uma lógica própria. Esse corredor utiliza o caminho mais curto e sua pontuação obtida no cálculo do caminho mais curto para saber qual a melhor ação a ser tomada.
 
 Com mais uma \textit{thread} separada para a lógica de mudança de estado do personagem não jogável, ele consegue se movimentar de forma autônoma, sem a necessidade de interação do jogador.
 
 \subsubsection{Visão ambiental}
 
-Como todo corredor, ele chama o controlador do mapa para saber qual o caminho mais curto para o próximo ponto de controle, e com isso ele consegue ter uma visão do ambiente. A imagem mais clara sobre o que o corredor enxerga é a imagem \ref{fig:mapa-modelado-com-pontos}.
+Como todo corredor, o jogador controlado pela inteligência artificial chama o controlador do mapa para saber qual o caminho mais curto para o próximo ponto de controle, e com isso ele consegue ter uma visão do ambiente. A imagem mais clara sobre o que o corredor enxerga é a imagem \ref{fig:mapa-modelado-com-pontos}.
 
 \subsubsection{Tomada de decisão}
 
@@ -579,7 +578,7 @@ Para visualização desse ponto de destino foi implementado uma seta que sempre 
 
 \subsubsection{Modelo Elástico}
 
-Para que o jogo fique dinâmico, foi implementado um modelo elástico, que é uma tática encontrado em jogos de corrida para que os corredores não tenham uma vantagem ou desvantagem muito grande, dessa forma, caso um corredor esteja muito atrás, ele terá uma velocidade maior, e caso um corredor esteja muito à frente, ele terá uma velocidade menor.
+Para que o jogo fique dinâmico, foi implementado um modelo elástico, que é uma tática encontrada em jogos de corrida para que os corredores não tenham uma vantagem ou desvantagem muito grande, dessa forma, caso um corredor esteja muito atrás, ele terá uma velocidade maior, e caso um corredor esteja muito à frente, ele terá uma velocidade menor.
 
 A cada iteração lógica do jogo temos um cálculo simples de diferença de 'pontuação' (proximidade do ponto de partida) entre o corredor e o jogador, e com isso é calculado uma velocidade adicional para o corredor, que é somada à velocidade atual, diminuindo a diferença entre os corredores.
 

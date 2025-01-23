@@ -222,35 +222,11 @@ todos aqueles que me ajudaram a superar cada limite e dificuldade durante esses 
 \bgroup
 \raggedbottom
 
-%%%%% Listas criadas manualmente
-
-%\chapter*{Lista de abreviaturas}
-\disablenewpage{\chapter*{Lista de abreviaturas}}
-
-\begin{tabular}{rl}
-   IME & Instituto de Matemática e Estatística\\
-   USP & Universidade de São Paulo \\
-   SAT & Separating Axis Theorem \\
-\end{tabular}
-
-%\chapter*{Lista de símbolos}
-\disablenewpage{\chapter*{Lista de símbolos}}
-
-\begin{tabular}{rl}
-\end{tabular}
-
-% Quebra de página manual
-\clearpage
-
 %%%%% Listas criadas automaticamente
 
 % Você pode escolher se quer ou não permitir a quebra de página
 %\listoffigures
 \disablenewpage{\listoffigures}
-
-% Você pode escolher se quer ou não permitir a quebra de página
-%\listoftables
-\disablenewpage{\listoftables}
 
 % Esta lista é criada "automaticamente" pela package float quando
 % definimos o novo tipo de float "program" (em utils.tex)
@@ -307,62 +283,6 @@ todos aqueles que me ajudaram a superar cada limite e dificuldade durante esses 
 \input{conteudo/06-resultados}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%% APÊNDICES E ANEXOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Um apêndice é algum conteúdo adicional de sua autoria que faz parte e
-% colabora com a ideia geral do texto mas que, por alguma razão, não precisa
-% fazer parte da sequência do discurso; por exemplo, a demonstração de um
-% teorema intermediário, as perguntas usadas em uma pesquisa qualitativa etc.
-%
-% Um anexo é um documento que não faz parte da tese (em geral, nem é de sua
-% autoria) mas é relevante para o conteúdo; por exemplo, a especificação do
-% padrão técnico ou a legislação que o trabalho discute, um artigo de jornal
-% apresentando a percepção do público sobre o tema da tese etc.
-%
-% Os comandos appendix e annex reiniciam a numeração de capítulos e passam
-% a numerá-los com letras. "annex" não faz parte de nenhuma classe padrão,
-% foi criado para este modelo. Se o trabalho não tiver apêndices ou anexos,
-% remova estas linhas.
-%
-% Diferentemente de \mainmatter, \backmatter etc., \appendix e \annex não
-% forçam o início de uma nova página. Em geral isso não é importante, pois
-% o comando seguinte costuma ser "\chapter", mas pode causar problemas com
-% a formatação dos cabeçalhos. Assim, vamos forçar uma nova página antes
-% de cada um deles.
-
-%%%% Apêndices %%%%
-
-\cleardoublepage
-
-\pagestyle{appendix}
-
-\appendix
-
-% \addappheadtotoc acrescenta a palavra "Apêndice" ao sumário; se
-% só há apêndices, sem anexos, provavelmente não é necessário.
-\addappheadtotoc
-
-%\input{conteudo/apendice-exemplo-faq}
-\par
-
-%%%% Anexos %%%%
-
-\cleardoublepage
-
-\pagestyle{appendix} % repete o anterior, caso você não use apêndices
-
-\annex
-
-% \addappheadtotoc acrescenta a palavra "Anexo" ao sumário; se
-% só há anexos, sem apêndices, provavelmente não é necessário.
-\addappheadtotoc
-
-% \input{conteudo/anexo-exemplo-imegoodies}
-% \par
-% \input{conteudo/anexo-exemplo-pseudocodigo}
-% \par
-
-
 %%%%%%%%%%%%%%% SEÇÕES FINAIS (BIBLIOGRAFIA E ÍNDICE REMISSIVO) %%%%%%%%%%%%%%%%
 
 % O comando backmatter desabilita a numeração de capítulos.
@@ -380,7 +300,5 @@ todos aqueles que me ajudaram a superar cada limite e dificuldade durante esses 
   %title=\bibname\label{sec:bib}, % "Bibliografia"
   heading=bibintoc, % Inclui a bibliografia no sumário
 ]
-
-\printindex % imprime o índice remissivo no documento (opcional)
 
 \end{document}
